@@ -1,0 +1,8 @@
+component tree 
+rule : One Angular Application = One component Tree
+
+Ex: 
+
+AppComponent -> HeaderCom ; UserCom ; TasksCom 
+and below the TasksCom -> small taskCom
+
