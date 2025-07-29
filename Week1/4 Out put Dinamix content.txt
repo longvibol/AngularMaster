@@ -26,7 +26,43 @@ selectdUser
 
 -------------------------------------------------------------------
 
-It called binding 
+Property Binding : 
+
+1- String interpolation : {{}}
+
+EX:
+
+<span>{{seletedUser.name}}</span>
+
+<span> : it call tag
+
+2- Property binding : 
+
+-attribute <img> 
+
+Ex: 
+
+<img
+      [src]="'assets/users/' + seletedUser.avatar"
+      [alt]="seletedUser.name"
+/>
+
+
+=======================================================
+
+<div>
+  <button>
+    <img
+      [src]="'assets/users/' + seletedUser.avatar"
+      [alt]="seletedUser.name"
+    />
+    <span>{{ seletedUser.name }}</span>
+  </button>
+</div>
+
+-------------------------
+
+
 
 
 

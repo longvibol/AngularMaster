@@ -1,0 +1,23 @@
+export class UserComponent {
+
+  seletedUser = DUMMY_USERS[randomIndex];
+
+  get imagePath(){
+    return 'assets/users/' + this.seletedUser.avatar
+  }
+
+}
+
+-- get this the keyword property that return the value to html 
+
+===> in the html 
+
+<div>
+  <button>
+    <img
+      [src]="imagePath"
+      [alt]="seletedUser.name"
+    />
+    <span>{{ seletedUser.name }}</span>
+  </button>
+</div>
