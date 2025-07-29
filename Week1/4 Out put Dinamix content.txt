@@ -1,0 +1,47 @@
+1. create dinamix user 
+
+import { Component } from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
+
+const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+
+@Component({
+  selector: 'app-user',
+  standalone: true,
+  imports: [],
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css'
+})
+export class UserComponent {
+
+  selectdUser = DUMMY_USERS[randomIndex];
+
+}
+
+-- explain 
+This property in this class will be avable in the html file 
+
+selectdUser 
+
+
+-------------------------------------------------------------------
+
+It called binding 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

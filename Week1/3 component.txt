@@ -1,0 +1,100 @@
+1 header component 
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-header',
+  standalone: true,
+  imports: [],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css'
+})
+export class HeaderComponent {
+
+}
+
+------------------------------
+
+explain: 
+
+- styleUrls: ['./header.component.css'] : Add Array Folder (have "S")
+- styleUrl: './header.component.css' : Add single CSS url from other folder 
+- style: ['h1 { color: red}'] : inline CSS 
+
+=======================
+
+Add Image to the the component 
+
+1. Add asset entry = add folder image
+
+In the Anular.json:
+
+"assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+
+
+2. in the component 
+
+<header>
+    <img src="\assets\task-management-logo.png" alt="A todo list" />
+    <h1>EasyTask</h1>
+</header>
+
+----------------------------------------------------------------------
+
+Using Command to crate Component :
+
+>> ng generate component header 
+or 
+>> ng g c user
+
+Ex:
+
+>> ng g c user
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  standalone: true,
+  imports: [],
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css'
+})
+export class UserComponent {
+
+}
+
+it will create three folder 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
