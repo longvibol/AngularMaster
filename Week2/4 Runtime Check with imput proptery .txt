@@ -1,0 +1,5 @@
+@Input({required: true}) avatar!: string;
+@Input({required: true}) name!: string; 
+
+
+{required: true} : when we miss to create the property in the HTML it will have runtime error 

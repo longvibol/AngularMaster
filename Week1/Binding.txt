@@ -1,0 +1,136 @@
+1-Property Binding : One way for component to view 
+
+<!-- Syntax -->
+[elementProperty]="componentProperty"
+
+
+Property binding lets you set values for DOM properties using component data. It uses square brackets [] around the property name.
+
+Example of DOM properties: 
+
+Common DOM Properties You Bind To in Angular
+
+• 	value → for <input>
+• 	checked → for checkboxes
+• 	disable → for buttons
+• 	src → for images
+• 	innerText or textcontent → for text display
+• 	className → for styling
+
+
+// In your component.ts
+export class AppComponent {
+  imageUrl = 'https://example.com/image.jpg';
+}
+
+
+2. Event binding :two-way binding 
+
+<!-- Syntax -->
+(eventName)="methodName($event)"
+
+- eventName: The name of the DOM event (e.g., click, keyup, change)
+- methodName: A function defined in your component
+- $event: The event object passed from the DOM
+
+Common DOM Events You Can Bind
+
+| click |  | (click)="doSomething()" | 
+| input |  | (input)="onInput($event)" | 
+| keyup |  | (keyup.enter)="onEnter()" | 
+| change |  | (change)="onChange($event)" | 
+| submit |  | (submit)="onSubmit()" | 
+| mouseover |  | (mouseover)="onHover()" | 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

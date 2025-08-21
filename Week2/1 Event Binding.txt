@@ -1,0 +1,59 @@
+1. Listen to user input 
+
+- Even listener
+
+In Html 
+
+<div>
+  <button (click)="onSelectUser()" >
+    <img
+      [src]="imagePath"
+      [alt]="selectdUser.name"
+    />
+    <span>{{ selectdUser.name }}</span>
+  </button>
+</div>
+
+--  <button (click)="onSelectUser()" >
+We use " click event " to listen from the user click on the button then it will called the JS 
+
+-----------------------------------------
+
+onSelectUser(){
+    console.log('Clicked!');
+  }
+
+-----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

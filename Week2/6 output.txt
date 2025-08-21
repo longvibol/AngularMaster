@@ -1,0 +1,104 @@
+1. Output Property 
+
+In Angular, "emitting" usually refers to the act of sending out an event from a child component to its parent using an EventEmitter. It’s a key part of Angular’s component communication model, especially when you want to notify a parent component that something has happened in the child.
+
+ជាសកម្មភាពដែល ព្រឹក្តការណមួយធ្វើឡើងយើង បញ្ចូនទិន្នន័យទៅអោយ component ផ្សេងធ្វើការ។
+
+Ex:
+
+@Output() select = new EventEmitter(); 
+
+We instance the object from class EventEmitter() 
+==> so we can use select for emitting to the parent component. 
+
+----------------------------------------------------------------------------
+
+យើងចង់បានពេលគេ ចុងលើ Button វាបង្ហាញ output to the HTML main page. 
+យើងត្រូវបង្កើត listener ខ្លួនឯងពេលគេចុតលើ Button មួយណាអោយវាបង្ហាទិន្នន័យមួយនឹង 
+
+ចឹងជាឧទាហរណ័ សម្រាប់ id 
+
+1. in user.component.ts 
+
+- @Input({required : true}) id!:string;
+
+ដើម្បីទទួល input and it is Id from the user 
+
+- @Output() select = new EventEmitter();
+
+យើងបង្កើត select object ដែលយើងអាចប្រើ Method ដើម្បីធ្វើការបង្ហាញទិន្នន័យទៅក្រៅ
+
+==> ចឹងបានយើងត្រូវបង្កើត emilt 
+
+- we create onSelectUser() this is our custom event we want to do to emit to the output 
+
+យើងបង្ហាញ event ដែលយើងចង់អោយវាធ្វើពេលដែលគេ ចុចវា​
+
+onSelectUser(){   
+    this.select.emit(this.id);
+  }
+
+យើងគិតចេះគេចុច នៅ component chile : user.component then we want to change the parent app.component 
+ដូចនេះហើយបានជាយើងត្រូវមាន onSelectUser() function 
+
+========================================
+
+app.component : ts
+
+import { Component } from '@angular/core';
+import { HeaderComponent } from "./header/header.component";
+import { UserComponent } from './user/user.component';
+import { DUMMY_USERS } from './dummy-users';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [HeaderComponent, UserComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+})
+export class AppComponent {
+  users = DUMMY_USERS;
+  //our custom event listener 
+
+  onSelectUser(id : string){
+    console.log('Selected user with id : ' + id);
+  }
+  
+}
+
+--Explain :
+
+onSelectUser(id : string){
+    console.log('Selected user with id : ' + id);
+
+when they click : "onSelectUser($event)" in the app.c.html 
+
+@event = វាជាអ្នកទទួល ទិន្នន័យពី user.component.ts : onSelectUser(){   
+    this.select.emit(this.id);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+this "$event" variable is not just available when working with custom events!
+it can also use on build-in events (like "click") to get hold of potentially emitted values. 
+
+ 

@@ -28,7 +28,7 @@ selectdUser
 
 Property Binding : 
 
-1- String interpolation : {{}}
+1- String interpolation : {{}} យើងយកអាញាតមកប្រើនៅក្នុង HTML
 
 EX:
 
@@ -61,6 +61,15 @@ Ex:
 </div>
 
 -------------------------
+
+What is binding : Create connection 
+
+In programming—and especially in Angular—"bind" means to create a connection between two things so that when one changes, the other updates automatically.
+
+
+------------------------------------------------------------------------
+
+
 
 
 

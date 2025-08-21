@@ -32,7 +32,7 @@ app.component.ts ( our element name . components or other thing . ts :type )
 
 -selector: 'app-header' (component element tag) : it should put two work with - in the meeting because one word it will be confuse with the default tag in html 
 
--template : it mush have template for the make up language 
+-template : it mush have template for the make up language (html)
 example : 
 
 template : '<h1>Hello world</h1>' it is called inline code but we don't use this kind of inline code;

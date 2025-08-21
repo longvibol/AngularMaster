@@ -1,0 +1,172 @@
+Stage management : Zone vs Signal 
+
+1. Change State : zone.js & Angular change detection mechanism 
+
+We can control the state (change the view) to another event by using the two-way-binding 
+HTML:
+
+
+<div>
+  <button (click)="onSelectUser()" >
+    <img
+      [src]="imagePath"
+      [alt]="selectdUser.name"
+    />
+    <span>{{ selectdUser.name }}</span>
+  </button>
+</div>
+
+
+JS: 
+
+onSelectUser(){
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectdUser= DUMMY_USERS[randomIndex];
+  }
+
+- When the onSelectUser() called it will change the state 
+- const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length)- local change state 
+
+
+========================================================================================
+
+Option 2 to change stage : Using Signals to nofify Angular 
+
+Container concept :
+
+1. import signal function from the angular core 
+
+Think : it give the signal to the component so how they we can put the signal and return 
+
+- យើងត្រូវកំណត់កន្លែងដែលយើងចង់អោយវាផ្លាស់ប្តូរ State នឹង​គឺកន្លែងដែលយើង Click and call onSelectUser 
+
+onSelectUser(){
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+
+    this.selectdUser.set(DUMMY_USERS[randomIndex]);
+  }
+
+--> we use Set (mean set the signal watching this click event) 
+
+- ពេលដែលយើងធ្វើការ Click ហើយចង់អោយវាផ្លាស់ប្តូររូបភាព​( what we want it to return : image ) 
+
+imagePath = computed(()=>'assets/users/' + this.selectdUser().avatar);​
+
+That why function computer it need return function.  
+
+
+==========================================================
+
+HTML : 
+
+<div>
+  <button (click)="onSelectUser()" >
+    <img [src]="imagePath()" [alt]="selectdUser().name" />
+    <span>{{ selectdUser().name }}</span>
+  </button>
+</div>
+
+
+TS:
+
+import { Component,signal,computed } from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
+
+const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+@Component({
+  selector: 'app-user',
+  standalone: true,
+  imports: [],
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css'
+})
+export class UserComponent {
+
+  selectdUser = signal(DUMMY_USERS[randomIndex]);
+  imagePath = computed(()=>'assets/users/' + this.selectdUser().avatar);
+
+  onSelectUser(){
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectdUser.set(DUMMY_USERS[randomIndex]);
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
