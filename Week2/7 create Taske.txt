@@ -1,1 +1,95 @@
 >> ng g c tasks --skip-tests
+
+To display the name from what we select we can use find() function in angular 
+
+1. In tasks TS:
+
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-tasks',
+  standalone: true,
+  imports: [],
+  templateUrl: './tasks.component.html',
+  styleUrl: './tasks.component.css'
+})
+export class TasksComponent {
+@Input({required:true}) name !: string;
+}
+
+- create decorator Input name to get the input value from the select 
+
+2. In tasks.HTML 
+
+what we want to display : <h2>{{ name }}</h2>
+- we you string interpolation 
+
+3. In app.TS
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [HeaderComponent, UserComponent, TasksComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+})
+export class AppComponent {
+  users = DUMMY_USERS; // store users from Dummy_users;
+  selectedUserId = 'u1'; // set default selectedUserId 
+
+  get selectedUser(){
+    return this.users.find((user)=> user.id === this.selectedUserId)!;
+  }
+
+  onSelectUserApp(id : string){
+    this.selectedUserId= id; // when they click on the button it will call the : onSelectUserApp from the html 
+  }
+
+}
+
+==> where onSelectUserApp 
+
+<li>
+      <app-user
+        [id]="users[3].id"
+        [avatar]="users[3].avatar"
+        [name]="users[3].name"
+        (select) = "onSelectUserApp($event)"
+      />
+    </li>
+
+-----------------------------------------------------
+
+Note for the ! we use to tell the Typescript it is defind possible happend 
+
+ get selectedUser(){
+    return this.users.find((user)=> user.id === this.selectedUserId)!;
+  }
+
+in find() function it can posibitly that we can not find the object that why we use ! to tell TS we support to find the value for this find();
+
+- we as the developer to convient the TS that we never have undefind object (!) យើងប្រាប់វាថាកុំខ្វល់ដឹង 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

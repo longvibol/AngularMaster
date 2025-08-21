@@ -1,0 +1,13 @@
+In case we are not sure for the variable we can use "?" for undefind 
+
+Ex:
+
+@Input() name : string | undefined; = @Input() name ?: string;
+
+- call back function 
+
+<app-tasks [name]="selectedUser ? selectedUser.name : ''"/>
+
+? គេហៅថា union type or optional type 
+! we sure it will have input the variable 
+

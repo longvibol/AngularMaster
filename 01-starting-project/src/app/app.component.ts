@@ -8,16 +8,24 @@ import { TasksComponent } from './tasks/tasks.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, UserComponent,TasksComponent],
+  imports: [HeaderComponent, UserComponent, TasksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   users = DUMMY_USERS;
-  //our custom event listener 
+  selectedUserId = 'u1';
+
+  get selectedUser(){
+    return this.users.find((user)=> user.id === this.selectedUserId);
+  }
+
+  // onSelectUserApp(id : string){
+  //   this.selectedUserId= id;
+  // }
 
   onSelectUserApp(id : string){
-    console.log('Selected user with id : ' + id);
+    this.selectedUserId= id;
   }
 
 }
