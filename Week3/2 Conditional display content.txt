@@ -1,0 +1,103 @@
+យើងចង់បានពេលដែល គេមិន select user ណាមួយនោះទេអោយវា បង្ហាញទិន្នន័យ default មក​
+
+
+** In Angular Version 17 Up **
+
+@if (selectedUser) {
+    <app-tasks [name]="selectedUser.name" />
+  }@else {
+    <h2 class="no-user">Please select a user to see their tasks.</h2>
+  }
+
+- ចឹង @if នឹងទៅពិនិត្យលក្ខណហើយ 
+
+in app.component.ts 
+
+selectedUserId ?: string; យើងដាក់សញ្ហា ? ព្រោះវាមានករណី ដែលមិនមាន user ដែលយើង selected 
+
+
+In app.component.html: 
+
+<app-header />
+<main>
+  <ul id="users">
+    @for (user of users; track user){
+    <li>
+      <app-user [user]="user" (select)="onSelectUserApp($event)" />
+    </li>
+    }
+  </ul>
+
+  @if (selectedUser) {
+  <app-tasks [name]="selectedUser.name" />
+  }@else {
+  <h2 class="fallback">Please select a user to see their tasks.</h2>
+  }
+</main>
+
+** ចំណាំនៅក្នុង app.component.TS យើងមិនចាំបាច់ដាក់ IF or else then import to use te ** 
+
+---------------------------------
+
+* In Old version : condition we use : structural directive 
+
+<li *ngFor="let user of users">
+        <app-user [user]="user" (select)="onSelectUserApp($event)" />
+      </li>
+
+*ngFor : is called structural directive 
+
+In app.component.html 
+
+<app-header />
+<main>
+  <ul id="users">
+
+    <li *ngFor="let user of users">
+      <app-user [user]="user" (select)="onSelectUserApp($event)" />
+    </li>
+
+  </ul>
+
+
+  <app-tasks *ngIf="selectedUser; else fallback" [name]="selectedUser.name" />
+
+  <ng-template #fallback>
+    <h2 class="no-user">Please select a user to see their tasks.</h2>
+  </ng-template>
+
+
+</main>
+
+
+In the app.component.TS
+
+import { NgFor, NgIf, NgForOf } from '@angular/common';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [HeaderComponent, UserComponent, TasksComponent, NgFor, NgIf, NgForOf],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

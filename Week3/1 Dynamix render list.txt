@@ -1,0 +1,73 @@
+What is function signature ? 
+
+
+In TypeScript, a function signature defines the structure of a function—its name (if applicable), the number and types of parameters it accepts, and the type of value it returns. It’s like a contract that tells TypeScript what to expect when the function is used.
+
+--------------------------------------------------------------------------------------------
+In app.component.html
+
+<ul id="users">
+    <li>
+      <app-user [user]="users[0]" (select)="onSelectUserApp($event)" />
+    </li>
+    <li>
+      <app-user [user]="users[1]" (select)="onSelectUserApp($event)" />
+    </li>
+    <li>
+      <app-user [user]="users[2]" (select)="onSelectUserApp($event)" />
+    </li>
+    <li>
+      <app-user [user]="users[3]" (select)="onSelectUserApp($event)" />
+    </li>
+  </ul>
+
+
+WE want to dynamic display all the users : we will use track keyword in Angular : 
+
+
+<ul id="users">
+    @for (user of users; track user) {
+      <li>
+        <app-user [user]="user" (select)="onSelectUserApp($event)" />
+      </li>
+    }
+  </ul>
+
+--Explain :
+
+@for (user of users; track user)
+
+-user : is the variable where we declare 
+-users is the arrays list of user that we get from app.component.ts 
+
+-------------------------------
+
+export class AppComponent {
+  users = DUMMY_USERS;
+  selectedUserId = 'u1';
+
+  get selectedUser(){
+    return this.users.find((user)=> user.id === this.selectedUserId);
+  }
+  onSelectUserApp(id : string){
+    this.selectedUserId= id;
+  }
+
+}
+
+------------------------------
+
+this users : store the array of Dummay users data
+
+
+
+
+
+
+
+
+
+
+
+
+

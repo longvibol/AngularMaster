@@ -1,0 +1,124 @@
+យើងចឹងបង្កើត task.html មួយដែលបង្ហាញតែទៅលើឈ្មោះអ្នកដែលមានការងារធ្វើ នឹង 
+
+- Topict select specific task for user: 
+
+
+>> ng g c tasks/task --skip-tests
+
+យើងគិតចេះ បើគេ ចុះមួយណាអោយវាបង្ហាញតែការងារនឹងទៅបានហើយ 
+
+--------------------------------
+
+Step by Step to do it: 
+
+1. Create sample task data 
+
+In tasks.component.Ts 
+
+tasks =[
+  {
+    id: 't1',
+    userId: 'u1',
+    title: 'Master Angular',
+    summary:
+      'Learn all the basic and advanced features of Angular & how to apply them.',
+    dueDate: '2025-12-31',
+  },
+  {
+    id: 't2',
+    userId: 'u3',
+    title: 'Build first prototype',
+    summary: 'Build a first prototype of the online shop website',
+    dueDate: '2025-05-31',
+  },
+  {
+    id: 't3',
+    userId: 'u3',
+    title: 'Prepare issue template',
+    summary:
+      'Prepare and describe an issue template which will help with project management',
+    dueDate: '2025-06-15',
+  }
+]
+
+វាមានលេខរៀងវាសម្រាប់ task មួយនឹង : id : 't1'; id :'t2' ….
+ហើយនៅក្នុងនឹងវាមាន userId ទៀត មានន័យថា task t1 for user u1 ; u2 no task to do; and user 3 have 2 task that have t2 and t2
+
+In tasks.component.html យើងនឹងបង្ហាញវាម្តងមួយៗ
+
+  <ul>
+    @for (task of selectedUserTasks; track task.id){
+    <li>
+      <app-task />
+    </li>
+    }
+  </ul>
+
+ដោយប្រើ for loop ដើម្បីស្វែងរក នៅក្នុង selectedUserTasks​()​
+
+get selectedUserTasks(){
+  return this.tasks.filter((task) => task.userId === this.userId);
+}
+
+ដែលវាបង្ហាញតែអាណាដែលវាត្រូវនឹងវាទេ 
+
+@Input({required: true}) userId !: string;​ កន្លែងដែល អ្នកប្រើត្រូវចុះហើយ ប្រាប់ថាគេចុងត្រង់ User មួយណា​
+
+-------------- where we get the input : យើងធ្វើ property binding userId 
+យើងអោយ userId វាចាប់តម្លៃពី function : selectedUser នៅក្នុង 
+
+[userId]="selectedUser.id"
+
+------------------------------------------------------------------------
+In app.component.html 
+
+ @if (selectedUser) {
+  <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" />
+ }@else {
+  <h2 class="fallback">Please select a user to see their tasks.</h2>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
