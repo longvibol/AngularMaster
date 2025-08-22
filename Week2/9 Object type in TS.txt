@@ -1,0 +1,70 @@
+@Input({required : true}) id!:string;
+@Input({required : true}) avatar !: string;
+@Input({required:true}) name !: string;
+
+We can see that the Input property is from the Users and this is the propery inside the user: 
+
+==> Therefor in the Typescrip we can create Object Type for the @Input 
+
+property type id : string; avatar : string; name : string; 
+
+user object type : (យើងបង្កើត វាជា Object type easy to called it ) :
+
+@Input({required :true}) user!: {
+  id : string;
+  name : string;
+  avatar : string;
+}
+
+Then we can change the property : 
+Change from : 
+get imagePath() {
+  return 'assets/users/' +this.avatar; // access proptery 
+} 
+
+==> 
+
+get imagePath() {
+  return 'assets/users/' +this.user.avatar; // access property from object user
+}
+
+
+===========================
+
+in the app.component.html យើងអាចដាក់វាជា object បានសម្រាប់ User
+
+ <li>
+      <app-user
+        [id]="users[1].id"
+        [avatar]="users[1].avatar"
+        [name]="users[1].name"
+        (select) = "onSelectUserApp($event)"
+      />
+
+==> 
+
+<li>
+      <app-user [user]="users[0]" (select)="onSelectUserApp($event)" />
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

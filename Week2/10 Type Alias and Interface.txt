@@ -1,0 +1,80 @@
+- Improve from object type to interface :
+
+@Input({required :true}) user!: {
+  id : string;
+  name : string;
+  avatar : string;
+}
+
+------------------------------ Option 
+
+1. Using keywork : Type in the type scrip (type alies) 
+
+type User = {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+below @Component({}): 
+
+==> @Input({required :true}) user!: User;
+
+2. Using interface (another type scrip feature) that we can use with the Object type 
+
+interface User {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+We can use interface to define object type 
+
+យើងប្រើមួយណាក៏បានដែល នៅក្នុង  Angular យើងនឹងឃើញ គេប្រើ interface ច្រើន
+
+គេហៅវាថា @Input({required :true}) user!: User; User វាជា Object type 
+
+=====================================================
+
+យើងអាចកំនត់ចំណាំបាន 
+
+type មាន = 
+interface អត់មាន = te
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
